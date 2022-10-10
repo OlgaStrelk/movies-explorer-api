@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 // const cors = require('./middlewares/cors');
 // const { requestLogger, errorLogger } = require('./middlewares/logger');
 
-// const errorHandler = require('./middlewares/errorHandler');
+const errorHandler = require('./middlewares/errorHandler');
 
 const app = express();
 // app.use(cors);
@@ -29,7 +29,7 @@ app.use('/', require('./routes/index'));
 // app.use(errorLogger);
 // app.use(errors());
 
-// app.use(errorHandler);
+app.use(errorHandler);
 
 app.listen(PORT, () => {
   console.log(`App listening on port ${PORT}`);
