@@ -4,23 +4,30 @@
 	"description": "backend for Movies Explorer, Technology stack: Node.js, Express, MongoDB, nginx",
 	"main": "app.js",
 	"scripts": {
-	  "test": "echo \"Error: no test specified\" && exit 1",
-	  "start": "node app.js",
-	  "dev": "nodemon app.js",
-	  "lint": "npx eslint . --fix"
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "node app.js",
+		"dev": "nodemon app.js",
+		"lint": "npx eslint . --fix"
 	},
 	"repository": {
-	  "type": "git",
-	  "url": "git+https://github.com/OlgaStrelk/movies-explorer-api.git"
+		"type": "git",
+		"url": "git+https://github.com/OlgaStrelk/movies-explorer-api.git"
 	},
 	"author": "Olga Strelkova",
 	"license": "ISC",
 	"bugs": {
-	  "url": "https://github.com/OlgaStrelk/movies-explorer-api/issues"
+		"url": "https://github.com/OlgaStrelk/movies-explorer-api/issues"
 	},
 	"homepage": "https://github.com/OlgaStrelk/movies-explorer-api#readme",
 	"devDependencies": {
 		"eslint": "^8.24.0",
 		"eslint-config-airbnb-base": "^15.0.0"
-	  }
+	},
+	"dependencies": {
+		"bcryptjs": "^2.4.3",
+		"dotenv": "^16.0.3",
+		"express": "^4.18.2",
+		"mongoose": "^6.6.5",
+		"validator": "^13.7.0"
+	}
 }
