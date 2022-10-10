@@ -3,9 +3,9 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
-// const { errors } = require('celebrate');
+const { errors } = require('celebrate');
 const cors = require('./middlewares/cors');
-// const { requestLogger, errorLogger } = require('./middlewares/logger');
+const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const errorHandler = require('./middlewares/errorHandler');
 
@@ -22,12 +22,12 @@ db.once('open', console.log.bind(console, 'connection with db is set'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// app.use(requestLogger);
+app.use(requestLogger);
 
 app.use('/', require('./routes/index'));
 
-// app.use(errorLogger);
-// app.use(errors());
+app.use(errorLogger);
+app.use(errors());
 
 app.use(errorHandler);
 
