@@ -1,0 +1,26 @@
+{
+	"name": "movies-explorer-api",
+	"version": "1.0.0",
+	"description": "backend for Movies Explorer, Technology stack: Node.js, Express, MongoDB, nginx",
+	"main": "app.js",
+	"scripts": {
+	  "test": "echo \"Error: no test specified\" && exit 1",
+	  "start": "node app.js",
+	  "dev": "nodemon app.js",
+	  "lint": "npx eslint . --fix"
+	},
+	"repository": {
+	  "type": "git",
+	  "url": "git+https://github.com/OlgaStrelk/movies-explorer-api.git"
+	},
+	"author": "Olga Strelkova",
+	"license": "ISC",
+	"bugs": {
+	  "url": "https://github.com/OlgaStrelk/movies-explorer-api/issues"
+	},
+	"homepage": "https://github.com/OlgaStrelk/movies-explorer-api#readme",
+	"devDependencies": {
+		"eslint": "^8.24.0",
+		"eslint-config-airbnb-base": "^15.0.0"
+	  }
+}
