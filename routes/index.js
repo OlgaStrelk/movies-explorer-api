@@ -1,5 +1,7 @@
 const router = require('express').Router();
 
+const { createUser, login } = require('../controllers/auths');
+
 const NotFoundError = require('../utils/errors/NotFoundError');
 const { NOT_FOUND_PAGE_ERR_MESSAGE } = require('../utils/consts');
 
