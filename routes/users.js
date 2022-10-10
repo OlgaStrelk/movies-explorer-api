@@ -1,6 +1,7 @@
 const router = require('express').Router();
 
 const { updateProfile, getProfile } = require('../controllers/users');
+const { userIdValidator, profileValidator } = require('../middlewares/validator');
 
 router.get('/me', userIdValidator, getProfile);
 
