@@ -9,11 +9,13 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const errorHandler = require('./middlewares/errorHandler');
 
+const { DB_PATH, PORT_NUMBER } = require('./utils/consts');
+
 const app = express();
 app.use(cors);
 
-const { PORT = 3002 } = process.env;
-mongoose.connect(process.env.DB_PATH);
+const { PORT = PORT_NUMBER } = process.env;
+mongoose.connect(process.env.NODE_ENV !== 'production' ? DB_PATH : process.env.DB_PATH);
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));

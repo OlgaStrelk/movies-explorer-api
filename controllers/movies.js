@@ -6,6 +6,7 @@ const {
   MOVIE_DATA_ERR_MESSAGE,
   MOVIE_ID_ERR_MESSAGE,
   DELETE_MOVIE_ERR_MESSAGE,
+  DELETE_MOVIE_SUCCESS_MESSAGE,
 } = require('../utils/consts');
 
 module.exports.createMovie = (req, res, next) => {
@@ -31,9 +32,7 @@ module.exports.deleteMovieById = (req, res, next) => {
       } else if (req.user._id !== movie.owner.toString()) {
         next(new ForbiddenError(DELETE_MOVIE_ERR_MESSAGE));
       } else {
-        Movie.findByIdAndRemove(req.params.movieId).then((removedMovie) => {
-          res.send({ data: removedMovie });
-        });
+        Movie.findByIdAndRemove(req.params.movieId).then((removedMovie) => res.send({ message: `${DELETE_MOVIE_SUCCESS_MESSAGE} ${removedMovie.nameRu}` }));
       }
     })
     .catch((err) => {

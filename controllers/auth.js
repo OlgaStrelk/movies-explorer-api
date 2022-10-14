@@ -4,7 +4,7 @@ const User = require('../models/user');
 const BadRequestError = require('../utils/errors/BadRequestError');
 const ConflictError = require('../utils/errors/ConflictError');
 const {
-  CONFLICT_ERR_MESSAGE,
+  EMAIL_CONFLICT_ERR_MESSAGE,
   USER_DATA_ERR_MESSAGE,
 } = require('../utils/consts');
 
@@ -31,7 +31,7 @@ module.exports.createUser = (req, res, next) => {
     })
     .catch((err) => {
       if (err.code === DUPLICATED_DATA_ERROR) {
-        next(new ConflictError(CONFLICT_ERR_MESSAGE));
+        next(new ConflictError(EMAIL_CONFLICT_ERR_MESSAGE));
       } else if (err.name === 'ValidationError') {
         next(new BadRequestError(USER_DATA_ERR_MESSAGE));
       } else next(err);

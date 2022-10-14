@@ -1,6 +1,6 @@
 // ERROR MESSAGES
 // auth
-const CONFLICT_ERR_MESSAGE = 'Данный email уже занят';
+const EMAIL_CONFLICT_ERR_MESSAGE = 'Данный email уже занят';
 const LOGIN_ERR_MESSAGE = 'Неправильные почта или пароль';
 const UNAUTHORIZED_USER_ERR_MESSAGE = 'Необходимо авторизоваться';
 // user
@@ -10,6 +10,7 @@ const USER_DATA_ERR_MESSAGE = 'Переданы некорректные дан�
 const MOVIE_DATA_ERR_MESSAGE = 'Переданы некорректные данные фильма';
 const MOVIE_ID_ERR_MESSAGE = 'Фильм с указанным _id не найден';
 const DELETE_MOVIE_ERR_MESSAGE = 'Отсутствуют права для удаления данного фильма';
+const DELETE_MOVIE_SUCCESS_MESSAGE = 'Удален фильм';
 const MOVIE_SCHEMA_REQUIRED_MESSAGES = {
   COUNTRY: 'Cтрока "country" является обязательной',
   DIRECTOR: 'Cтрока "director" является обязательной',
@@ -31,7 +32,7 @@ const NOT_FOUND_PAGE_ERR_MESSAGE = 'Страница не найдена';
 const SERVER_ERR_MESSAGE = 'На сервере произошла ошибка';
 
 module.exports = {
-  CONFLICT_ERR_MESSAGE,
+  EMAIL_CONFLICT_ERR_MESSAGE,
   USER_ID_ERR_MESSAGE,
   USER_DATA_ERR_MESSAGE,
   NOT_FOUND_PAGE_ERR_MESSAGE,
@@ -42,4 +43,5 @@ module.exports = {
   UNAUTHORIZED_USER_ERR_MESSAGE,
   SERVER_ERR_MESSAGE,
   MOVIE_SCHEMA_REQUIRED_MESSAGES,
+  DELETE_MOVIE_SUCCESS_MESSAGE,
 };
