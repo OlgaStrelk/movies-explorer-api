@@ -74,6 +74,11 @@ const movieSchema = new mongoose.Schema(
       type: String,
       required: [true, MOVIE_SCHEMA_REQUIRED_MESSAGES.NAME_EN],
     },
+
+    movieId: {
+      type: Number,
+      required: [true, MOVIE_SCHEMA_REQUIRED_MESSAGES.MOVIE_ID]
+    },
   },
   { versionKey: false, new: true, runValidators: true },
 );
