@@ -77,7 +77,7 @@ const movieSchema = new mongoose.Schema(
 
     movieId: {
       type: Number,
-      required: [true, MOVIE_SCHEMA_REQUIRED_MESSAGES.MOVIE_ID]
+      required: [true, MOVIE_SCHEMA_REQUIRED_MESSAGES.MOVIE_ID],
     },
   },
   { versionKey: false, new: true, runValidators: true },

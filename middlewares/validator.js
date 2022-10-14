@@ -24,17 +24,17 @@ const profileValidator = celebrate({
 
 const movieValidator = celebrate({
   body: Joi.object().keys({
-    country: Joi.string().min(2).max(30).required(),
-    director: Joi.string().min(2).max(30).required(),
+    country: Joi.string().required(),
+    director: Joi.string().required(),
     duration: Joi.number().required(),
-    year: Joi.string().min(4).max(30).required(),
-    description: Joi.string().min(2).required(),
+    year: Joi.string().required(),
+    description: Joi.string().required(),
     image: Joi.string().required().pattern(regEx),
     trailerLink: Joi.string().required().pattern(regEx),
     thumbnail: Joi.string().required().pattern(regEx),
-    owner: Joi.string().length(24).hex().required(),
-    nameRU: Joi.string().min(2).max(30).required(),
-    nameEN: Joi.string().min(2).max(30).required(),
+    nameRU: Joi.string().required(),
+    nameEN: Joi.string().required(),
+    movieId: Joi.number().required(),
   }),
 });
 
