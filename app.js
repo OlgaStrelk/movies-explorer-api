@@ -13,7 +13,6 @@ const app = express();
 app.use(cors);
 
 mongoose.connect(DB_PATH);
-
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', console.log.bind(console, 'connection with db is set'));
