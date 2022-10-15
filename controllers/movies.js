@@ -30,7 +30,9 @@ module.exports.deleteMovieById = (req, res, next) => {
     .then((movie) => {
       if (req.user._id.toString() === movie.owner.toString()) {
         return movie.remove()
-          .then(() => res.send({ message: DELETE_MOVIE_SUCCESS_MESSAGE }));
+          .then((removedMovie) => {
+            res.send({ message: `${DELETE_MOVIE_SUCCESS_MESSAGE} ${removedMovie.nameRU}` });
+          });
       }
       return next(new ForbiddenError(DELETE_MOVIE_ERR_MESSAGE));
     })
