@@ -6,11 +6,11 @@ const isAuthorized = require('../middlewares/isAuthorized');
 const NotFoundError = require('../utils/errors/NotFoundError');
 const { NOT_FOUND_PAGE_ERR_MESSAGE } = require('../utils/consts');
 
-const { userValidator } = require('../middlewares/validator');
+const { userCreateValidator, userLoginValidator } = require('../middlewares/validator');
 
-router.post('/signup', userValidator, createUser);
+router.post('/signup', userCreateValidator, createUser);
 
-router.post('/signin', userValidator, login);
+router.post('/signin', userLoginValidator, login);
 
 router.use(isAuthorized);
 

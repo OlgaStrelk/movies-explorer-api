@@ -1,7 +1,15 @@
-const { celebrate, Joi } = require('celebrate');
-const { regEx } = require('../utils/regex');
+const { celebrate, Joi, CelebrateError } = require('celebrate');
+const isURL = require('validator/lib/isURL');
+const { INVALID_URL_ERR_MESSAGE } = require('../utils/consts');
 
-const userValidator = celebrate({
+const urlValidator = (value) => {
+  if (!isURL(value)) {
+    throw new CelebrateError(`${value} ${INVALID_URL_ERR_MESSAGE}`);
+  }
+  return value;
+};
+
+const userCreateValidator = celebrate({
   body: Joi.object().keys({
     name: Joi.string().min(2).max(30).required(),
     email: Joi.string().email().required(),
@@ -9,9 +17,10 @@ const userValidator = celebrate({
   }),
 });
 
-const userIdValidator = celebrate({
-  params: Joi.object().keys({
-    id: Joi.string().length(24).hex().required(),
+const userLoginValidator = celebrate({
+  body: Joi.object().keys({
+    email: Joi.string().email().required(),
+    password: Joi.string().required(),
   }),
 });
 
@@ -29,9 +38,9 @@ const movieValidator = celebrate({
     duration: Joi.number().required(),
     year: Joi.string().required(),
     description: Joi.string().required(),
-    image: Joi.string().required().pattern(regEx),
-    trailerLink: Joi.string().required().pattern(regEx),
-    thumbnail: Joi.string().required().pattern(regEx),
+    image: Joi.string().required().custom(urlValidator),
+    trailerLink: Joi.string().required().custom(urlValidator),
+    thumbnail: Joi.string().required().custom(urlValidator),
     nameRU: Joi.string().required(),
     nameEN: Joi.string().required(),
     movieId: Joi.number().required(),
@@ -45,8 +54,8 @@ const movieIdValidator = celebrate({
 });
 
 module.exports = {
-  userValidator,
-  userIdValidator,
+  userCreateValidator,
+  userLoginValidator,
   profileValidator,
   movieValidator,
   movieIdValidator,

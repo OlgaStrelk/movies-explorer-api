@@ -26,14 +26,13 @@ module.exports.createMovie = (req, res, next) => {
 
 module.exports.deleteMovieById = (req, res, next) => {
   Movie.findById(req.params.movieId)
+    .orFail(new NotFoundError(MOVIE_ID_ERR_MESSAGE))
     .then((movie) => {
-      if (!movie) {
-        next(new NotFoundError(MOVIE_ID_ERR_MESSAGE));
-      } else if (req.user._id !== movie.owner.toString()) {
-        next(new ForbiddenError(DELETE_MOVIE_ERR_MESSAGE));
-      } else {
-        Movie.findByIdAndRemove(req.params.movieId).then((removedMovie) => res.send({ message: `${DELETE_MOVIE_SUCCESS_MESSAGE} ${removedMovie.nameRu}` }));
+      if (req.user._id.toString() === movie.owner.toString()) {
+        return movie.remove()
+          .then(() => res.send({ message: DELETE_MOVIE_SUCCESS_MESSAGE }));
       }
+      return next(new ForbiddenError(DELETE_MOVIE_ERR_MESSAGE));
     })
     .catch((err) => {
       if (err.name === 'CastError') {
