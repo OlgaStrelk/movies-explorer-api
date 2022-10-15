@@ -1,12 +1,13 @@
-const { celebrate, Joi, CelebrateError } = require('celebrate');
-const isURL = require('validator/lib/isURL');
+const { celebrate, Joi } = require('celebrate');
+const isUrl = require('validator/lib/isURL');
+
 const { INVALID_URL_ERR_MESSAGE } = require('../utils/consts');
 
-const urlValidator = (value) => {
-  if (!isURL(value)) {
-    throw new CelebrateError(`${value} ${INVALID_URL_ERR_MESSAGE}`);
+const urlValidator = (value, helpers) => {
+  if (isUrl(value)) {
+    return value;
   }
-  return value;
+  return helpers.message(INVALID_URL_ERR_MESSAGE);
 };
 
 const userCreateValidator = celebrate({

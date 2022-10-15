@@ -11,6 +11,7 @@ const UNAUTHORIZED_USER_ERR_MESSAGE = 'Необходимо авторизова
 const USER_ID_ERR_MESSAGE = 'Пользователь с таким id не найден';
 const USER_DATA_ERR_MESSAGE = 'Переданы некорректные данные пользователя';
 // movie
+const INVALID_URL_ERR_MESSAGE = 'Не является url-адресом';
 const MOVIE_DATA_ERR_MESSAGE = 'Переданы некорректные данные фильма';
 const MOVIE_ID_ERR_MESSAGE = 'Фильм с указанным _id не найден';
 const DELETE_MOVIE_ERR_MESSAGE = 'Отсутствуют права для удаления данного фильма';
@@ -39,6 +40,7 @@ module.exports = {
   DEFAULT_PORT,
   DEFAULT_DB_PATH,
   INVALID_EMAIL_ERR_MESSAGE,
+  INVALID_URL_ERR_MESSAGE,
   EMAIL_CONFLICT_ERR_MESSAGE,
   USER_ID_ERR_MESSAGE,
   USER_DATA_ERR_MESSAGE,
