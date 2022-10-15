@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const validator = require('validator');
 const bcrypt = require('bcryptjs');
 const UnauthorizedError = require('../utils/errors/UnauthorizedError');
-const { LOGIN_ERR_MESSAGE } = require('../utils/consts');
+const { LOGIN_ERR_MESSAGE, INVALID_EMAIL_ERR_MESSAGE } = require('../utils/consts');
 
 const userSchema = new mongoose.Schema(
   {
@@ -14,7 +14,7 @@ const userSchema = new mongoose.Schema(
         validator(email) {
           return validator.isEmail(email);
         },
-        message: 'Не является email',
+        message: INVALID_EMAIL_ERR_MESSAGE,
       },
     },
 
@@ -26,8 +26,6 @@ const userSchema = new mongoose.Schema(
 
     name: {
       type: String,
-      minlength: 2,
-      maxlength: 30,
       required: true,
     },
 

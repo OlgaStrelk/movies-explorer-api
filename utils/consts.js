@@ -1,5 +1,9 @@
+const DEFAULT_PORT = '3002';
+const DEFAULT_DB_PATH = 'mongodb://127.0.0.1:27017/beatfilmsdb';
+
 // ERROR MESSAGES
 // auth
+const INVALID_EMAIL_ERR_MESSAGE = 'Не является email';
 const EMAIL_CONFLICT_ERR_MESSAGE = 'Данный email уже занят';
 const LOGIN_ERR_MESSAGE = 'Неправильные почта или пароль';
 const UNAUTHORIZED_USER_ERR_MESSAGE = 'Необходимо авторизоваться';
@@ -32,6 +36,9 @@ const NOT_FOUND_PAGE_ERR_MESSAGE = 'Страница не найдена';
 const SERVER_ERR_MESSAGE = 'На сервере произошла ошибка';
 
 module.exports = {
+  DEFAULT_PORT,
+  DEFAULT_DB_PATH,
+  INVALID_EMAIL_ERR_MESSAGE,
   EMAIL_CONFLICT_ERR_MESSAGE,
   USER_ID_ERR_MESSAGE,
   USER_DATA_ERR_MESSAGE,
