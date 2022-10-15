@@ -2,11 +2,13 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const { errors } = require('celebrate');
+const helmet = require('helmet');
 
 const { DB_PATH, PORT } = require('./utils/config');
 const cors = require('./middlewares/cors');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const errorHandler = require('./middlewares/errorHandler');
+const limiter = require('./middlewares/limiter');
 
 const app = express();
 
@@ -21,6 +23,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(requestLogger);
+
+app.use(limiter);
+app.use(helmet());
 
 app.use('/', require('./routes/index'));
 
