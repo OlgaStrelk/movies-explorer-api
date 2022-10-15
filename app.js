@@ -1,20 +1,17 @@
-require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-
 const { errors } = require('celebrate');
+
+const { DB_PATH, PORT } = require('./utils/config');
 const cors = require('./middlewares/cors');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-
 const errorHandler = require('./middlewares/errorHandler');
 
-const { DEFAULT_DB_PATH, DEFAULT_PORT } = require('./utils/consts');
-
 const app = express();
+
 app.use(cors);
 
-const { PORT = DEFAULT_PORT, DB_PATH = DEFAULT_DB_PATH } = process.env;
 mongoose.connect(DB_PATH);
 
 const db = mongoose.connection;
