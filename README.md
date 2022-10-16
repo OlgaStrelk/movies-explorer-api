@@ -78,6 +78,14 @@ PATCH https://api.beatfilms.nomoredomains.icu/signin
 
 ##### Защищенные роуты:
 
+* получить информацию о залогиненном пользователе:
+
+GET https://api.beatfilms.nomoredomains.icu/users/me
+
+* обновить данные пользователя:
+
+PATCH https://api.beatfilms.nomoredomains.icu/users/me
+
 * получить список фильмов
 
 GET https://api.beatfilms.nomoredomains.icu/movies
@@ -99,13 +107,14 @@ POST https://api.beatfilms.nomoredomains.icu/movies
   "trailerLink": "https://www.youtube.com/watch?v=mMTOCM-VTBE",
   "thumbnail": "https://www.youtube.com/watch?v=mMTOCM-VTBE",
   "nameRU": "Теснота",
-  "nameEN": "Tesnota"
+  "nameEN": "Tesnota",
+  "movieId": 24353534
 }
 ```
 
 * удалить фильм 
 
-DELETE https://api.cinema-explorer.students.nomoredomains.icu/movies/id_добавленного_фильма
+DELETE https://api.cinema-explorer.students.nomoredomains.icu/movies/_id_добавленного_фильма
 
 _пустое тело запроса_
 
@@ -128,6 +137,8 @@ _пустое тело запроса_
 * bcryptjs
 * jsonwebtoken
 * eslint
+* helmet
+* rate limiter
 
 ## Чеклист
 
