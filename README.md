@@ -137,6 +137,8 @@ _пустое тело запроса_
 * bcryptjs
 * jsonwebtoken
 * eslint
+* helmet
+* rate limiter
 
 ## Чеклист
 
